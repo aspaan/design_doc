@@ -1,5 +1,28 @@
 # Design Document for CI/CD Test Integration
 
+1. **[Introduction](#introduction)**
+   - [Assumptions](#assumptions)
+
+2. **[Solution Approaches](#solution-approaches)**
+   - [Approach 1: Static Partitioning with Dynamic Execution](#approach-1-static-partitioning-with-dynamic-execution)
+     - [Description](#description)
+     - [Implementation Outline](#implementation-outline)
+     - [Pros](#pros)
+     - [Cons](#cons)
+   - [Approach 2: Dynamic Partitioning and Load Balancing](#approach-2-dynamic-partitioning-and-load-balancing)
+     - [Description](#description-1)
+     - [Implementation Outline](#implementation-outline-1)
+     - [Pros](#pros-1)
+     - [Cons](#cons-1)
+
+3. **[Recommendation](#recommendation)**
+
+4. **[Approach 2: Implementation](#approach-2-implementation)**
+   - [YAML Configuration for GitHub Actions](#yaml-configuration-for-github-actions)
+   - [TypeScript Code (`runTests.js`)](#typescript-code-runtestsjs)
+   - [Explanation](#explanation)
+
+
 ## Introduction
 This design document details two distinct solutions to integrate a suite of 3,000 end-to-end Playwright tests into the pull request validation pipeline for a software development project. The goal is to minimize the total execution time of the validation pipeline while adhering to a specified duration limit through efficient parallel execution across multiple agents.
 
